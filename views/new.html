@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="public/img/favicon.ico">
+
+    <title>后台商品管理系统</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/public/css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">某某电商</a>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#">退出登录</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <!-- 左边栏菜单 -->
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <span data-feather="home"></span>
+                                用户管理 <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file"></span>
+                                商品信息管理
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="shopping-cart"></span>
+                                品牌信息管理
+                            </a>
+                        </li>
+
+                        <!-- <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="bar-chart-2"></span>
+                  Reports
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="layers"></span>
+                  Integrations
+                </a>
+              </li> -->
+                    </ul>
+
+            <!-- 产品信息版块 -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                    <h1 class="h2">用户信息</h1>
+                </div>
+                <form action="/product/new" method="POST">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">昵称</label>
+                        <input type="text" class="form-control" name="name" id="" placeholder="输入姓名">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="radio" name="sex" value="0"> 男
+                        </label>
+                        <label>
+                            <input type="radio" name="sex" value="1"> 女
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">年龄</label>
+                        <input type="number" class="form-control" name="number" id="" placeholder="输入年龄">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">手机号</label>
+                        <input type="number" class="form-control" id="" name="phone">
+                        <p class="help-block">后续添加</p>
+                    </div>
+                    <button type="submit" class="btn btn-default">提交</button>
+                </form>
+
+            </main>
+
+        </div>
+    </div>
+</body>
+
+</html>

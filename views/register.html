@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/public/img/favicon.ico">
+
+    <title>注册用户</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/public/css/signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+    <form id="register_form" class="form-signin" method="POST" action="/register">
+        <h1 class="h3 mb-3 font-weight-normal">注册</h1>
+
+        <label for="inputEmail" class="sr-only">输入邮箱</label>
+        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="输入邮箱" required autofocus>
+        <label for="nickname" class="sr-only">昵称</label>
+        <input type="text" id="nickname" class="form-control" name="nickname" placeholder="昵称" required>
+        <label for="password" class="sr-only">输入密码</label>
+        <input type="password" id="password" class="form-control" name="password" placeholder="输入密码" required>
+        <label for="phone" class="sr-only">手机号</label>
+        <input type="number" id="phone" class="form-control" name="phone" placeholder="手机号" required>
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox"> 管理员
+            </label>
+            <a href="/login">登录入口</a>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+    <script src="/public/js/jquery.js"></script>
+    <script>
+        //这里异步提交,交互方式更丰富
+        $('#register_form').on('submit', function (e) {
+            //阻止默认提交方式
+            e.preventDefault()
+            //获取表单序列化
+            var formData = $(this).serialize()
+            $.ajax({
+                url: '/register',
+                type: 'post',
+                data: formData,
+                dataType: 'JSON',
+                success: function (data) {
+                    // console.log(data)
+                    var err_code = data.err_code
+                    //判断成功是否和跳转页面
+                    if (err_code === 0) {
+                        // 服务端重定向针对异步请求无效
+                        window.location.href = '/'
+                    } else if (err_code === 1) {
+                        window.alert('邮箱已存在！')
+                    } else if (err_code === 2) {
+                        window.alert('昵称已存在！')
+                    } else if(err_code === 500){
+                        window.alert('服务器忙,请稍后重试!')
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
